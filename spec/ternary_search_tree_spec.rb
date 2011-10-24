@@ -40,12 +40,44 @@ describe TernarySearchTree do
       tree.root.higher.should be_nil
       
       leaf.pattern.should == "abc"
-      leaf.pattern.split_char.should == "c"
+      leaf.split_char.should == "c"
       leaf.lower.should be_nil
       leaf.equal.should be_nil
       leaf.higher.should be_nil
     end
-         
+
+    it "insert two strings" do
+      tree = TernarySearchTree::Tree.new
+      leaf1 = tree.insert("abc")
+      leaf2 = tree.insert("ace")
+      
+      tree.root.should_not be_nil
+      tree.root.split_char.should == "a"
+      tree.root.pattern.should be_nil
+      tree.root.lower.should be_nil
+      tree.root.higher.should be_nil
+      
+      tree.root.equal.lower.should be_nil
+      tree.root.equal.higher.should_not be_nil
+      tree.root.equal.higher.split_char.should == "c"
+      
+      leaf2.pattern.should == "ace"
+      leaf2.split_char.should == "e"
+      leaf2.lower.should be_nil
+      leaf2.equal.should be_nil
+      leaf2.higher.should be_nil
+    end
+    
+    it "inserting a shorter pattern is cutting a node" do
+      tree = TernarySearchTree::Tree.new
+      leaf1 = tree.insert("abc")
+      
+      tree.root.equal.equal.pattern.should == "abc"
+      
+      leaf2 = tree.insert("ab")
+      tree.root.equal.equal.should be_nil
+      tree.root.equal.pattern.should == "ab"
+    end
+      
   end
-  
 end

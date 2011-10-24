@@ -65,7 +65,7 @@ module TernarySearchTree
           node = node.higher
         else
           position += 1
-          if( postion == string.size )
+          if( position == pattern.size )
             contained = true
             unless( node.higher || node.lower ) #cut node as a shorter prefix exists
               node.pattern = pattern
