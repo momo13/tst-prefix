@@ -23,7 +23,7 @@ module TernarySearchTree
       found = false
       position = 0
       
-      while( node )
+      while( node && position < string.size )
         parent = node
         if( string[position] < node.split_char )
           node = node.lower
@@ -31,11 +31,10 @@ module TernarySearchTree
           node = node.higher
         else
           position += 1
-          if( postion == string.size )
+          if( position == string.size && !node.pattern.nil? )
             found = true
-          else
-            node = node.equal
           end
+          node = node.equal
         end
       end
       
@@ -67,10 +66,8 @@ module TernarySearchTree
           position += 1
           if( position == pattern.size )
             contained = true
-            unless( node.higher || node.lower ) #cut node as a shorter prefix exists
-              node.pattern = pattern
-              node.equal = nil
-            end
+            node.pattern = pattern
+            node.equal = nil
           else
             node = node.equal
           end

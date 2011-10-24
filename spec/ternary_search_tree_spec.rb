@@ -68,6 +68,25 @@ describe TernarySearchTree do
       tree.root.equal.equal.should be_nil
       tree.root.equal.pattern.should == "ab"
     end
+    
+    it "finds a prefix pattern" do
+      tree = TernarySearchTree::Tree.new
+      leaf1 = tree.insert("abc")
+      
+      found, node = tree.search("abc")
+      
+      found.should be_true
+      node.pattern.should == "abc"
+    end
+
+    it "does return false if no prefix exists" do
+      tree = TernarySearchTree::Tree.new
+      leaf1 = tree.insert("abc")
+      
+      found, node = tree.search("ab")
+      
+      found.should_not be_true      
+    end
 
   end
     
