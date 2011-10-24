@@ -9,16 +9,6 @@ describe TernarySearchTree do
       tree.root.should be_nil
     end
     
-  end
-    
-  describe "Node" do
-    
-    it "stores a split character" do
-      node = TernarySearchTree::Node.new("s")
-      
-      node.split_char.should == "s"
-    end
-    
     it "inserts in an empty tree - one char" do
       tree = TernarySearchTree::Tree.new
       tree.insert("a")
@@ -78,6 +68,16 @@ describe TernarySearchTree do
       tree.root.equal.equal.should be_nil
       tree.root.equal.pattern.should == "ab"
     end
+
+  end
+    
+  describe "Node" do
+    
+    it "stores a split character" do
+      node = TernarySearchTree::Node.new("s")
       
+      node.split_char.should == "s"
+    end
+
   end
 end
