@@ -107,6 +107,8 @@ describe TernarySearchTree do
       leaf2 = tree.insert("http://www.new-news.de/finance/")
       leaf3 = tree.insert("http://www.new-news.de/people")
       
+      tree.print
+      
       found, node = tree.search("http://www.new-news.de/sport/people/winners")
       found.should be_true
       
@@ -114,6 +116,7 @@ describe TernarySearchTree do
       found.should be_false
       
       found, node = tree.search("http://www.new-news.de/finance/")
+      node.pattern.should == "http://www.new-news.de/finance/"
       found.should be_true
     end
 
