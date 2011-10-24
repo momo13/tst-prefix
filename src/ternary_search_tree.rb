@@ -66,11 +66,13 @@ module TernarySearchTree
           node = node.higher
         else
           position += 1
-          if( position == pattern.size )
+          if( position == pattern.size ) #cut node here, as this is a shorter prefix
             contained = true
             node.pattern = pattern
             node.equal = nil
-          else
+          elsif ( node.pattern != nil)
+            contained = true #there is already a shorter prefix
+          else 
             node = node.equal
           end
         end

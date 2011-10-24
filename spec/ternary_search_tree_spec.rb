@@ -69,6 +69,19 @@ describe TernarySearchTree do
       tree.root.equal.pattern.should == "ab"
     end
     
+    it "inserting a longer pattern is keeping the shorter pattern" do
+      tree = TernarySearchTree::Tree.new
+      leaf1 = tree.insert("abc")
+      
+      tree.root.equal.equal.pattern.should == "abc"
+      
+      leaf2 = tree.insert("abcd")
+      
+      leaf2.pattern.should == "abc"
+      tree.root.equal.equal.pattern.should == "abc"
+      tree.root.equal.equal.equal.should be_nil
+    end
+    
     it "finds a prefix pattern" do
       tree = TernarySearchTree::Tree.new
       leaf1 = tree.insert("abc")
