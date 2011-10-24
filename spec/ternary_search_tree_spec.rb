@@ -87,6 +87,22 @@ describe TernarySearchTree do
       
       found.should_not be_true      
     end
+    
+    it "works with urls" do
+      tree = TernarySearchTree::Tree.new
+      leaf1 = tree.insert("http://www.new-news.de/sport/people")
+      leaf2 = tree.insert("http://www.new-news.de/finance/")
+      leaf3 = tree.insert("http://www.new-news.de/people")
+      
+      found, node = tree.search("http://www.new-news.de/sport/people/winners")
+      found.should be_true
+      
+      found, node = tree.search("http://www.new-news.de/")
+      found.should be_false
+      
+      found, node = tree.search("http://www.new-news.de/finance/")
+      found.should be_true
+    end
 
   end
     

@@ -31,7 +31,7 @@ module TernarySearchTree
           node = node.higher
         else
           position += 1
-          if( position == string.size && !node.pattern.nil? )
+          if( !node.pattern.nil? )
             found = true
           end
           node = node.equal
@@ -51,15 +51,17 @@ module TernarySearchTree
       while( is_part && !contained )
         parent = node
         if( pattern[position] < node.split_char )
-          if ( !node.lower ) 
+          if ( !node.lower )
             node.lower = child_node( pattern, position )
             is_part = false
+            position += 1
           end          
           node = node.lower
         elsif( pattern[position] > node.split_char )
           if ( !node.higher )
             node.higher = child_node( pattern, position )
             is_part = false
+            position += 1
           end
           node = node.higher
         else
