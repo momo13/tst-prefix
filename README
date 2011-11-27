@@ -1,3 +1,6 @@
-Ternary Search Tree for prefix search
+Ternary Search Tree for prefix search.
+
+This node stores the shortest common prefixes for inserted strings.
+The search checks for a given pattern, whether there is a prefix in the tree.
 
 Implementation after description from http://drdobbs.com/database/184410528
